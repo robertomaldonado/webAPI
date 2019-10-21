@@ -5,12 +5,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Threading.Tasks;
+using Calculator.Library.EC;
 
 namespace Calculator.WebAPI.Controllers
 {
     [RoutePrefix("api/Basic")]
     public class BasicController : ApiController
     {
+        //Basic methods that use Get
         [Route("Addition/{num_1}/{num_2}")]
         [HttpGet]
         public async Task<IHttpActionResult> Addition(int num_1, int num_2)
@@ -60,7 +62,13 @@ namespace Calculator.WebAPI.Controllers
             return Ok(Math.Log(num_2, num_1));
         }
 
-
-
+        //Basic methods that use Post
+        /*[Route("AdditionPost")]
+        [HttpPost]
+        public async Task<IHttpActionResult> AdditionPost([FromBody]int num_1, int num_2)
+        {
+            return Ok(await new OperationEC().AdditionPost(num_1, num_2));
+        }
+        */
     }
 }
